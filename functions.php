@@ -1,5 +1,22 @@
 <?php
 /*
+Подключение логотипа
+*/
+if ( ! function_exists('wp_dev_setup')) {
+	function wp_dev_setup() {
+		add_theme_support( 'custom-logo', [
+		'height'      => 50,
+		'width'       => 130,
+		'flex-width'  => false,
+		'flex-height' => false,
+		'header-text' => '',
+		'unlink-homepage-logo' => false, // WP 5.5
+	]);
+}
+add_action( 'after_setup_theme', 'wp_dev_setup' );
+}
+
+/*
 Подключение стилей и скриптов
 */
 add_action( 'wp_enqueue_scripts', 'wp_dev_scripts' );
