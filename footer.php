@@ -60,6 +60,8 @@
     Essential Scripts
     =====================================-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
+
+<!-- Подключение скриптов из файла functions.php -->
   <?php wp_footer(); ?>
   </body>
 </html>
