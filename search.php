@@ -1,13 +1,14 @@
+<?php get_header(); ?>
+
 <?php get_header();?>
 <!--MAIN BANNER AREA START -->
 <div class="page-banner-area page-contact" id="page-banner">
     <div class="overlay dark-overlay"></div>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 m-auto text-center col-sm-12 col-md-12">
+        <div class="row">
+            <div class="col-lg-8 col-sm-12 col-md-12">
                 <div class="banner-content content-padding">
-                    <h1 class="text-white">Promodise журнал</h1>
-                    <p>Полезные статьи про маркетинг и диджитал</p>
+                    <h1 class="text-white"><?php printf( esc_html__( 'Результаты поиска по&nbsp;запросу: %s', 'band-digital' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
                 </div>
             </div>
         </div>
@@ -170,4 +171,5 @@
         </div>
     </div>
 </section>
-<?php get_footer();?>
+
+<?php get_footer(); ?>

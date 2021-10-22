@@ -8,8 +8,11 @@
             <div class="row">
               <div class="col-lg-8 m-auto text-center col-sm-12 col-md-12">
                 <div class="banner-content content-padding">
+                  <!-- Выводим надзаголовок через данную конструкцию -->
                   <h5 class="subtitle"><?php echo get_post_meta($post->ID, 'subtitle', true);?></h5>
+                  <!-- Выводим заголовок через данную конструкцию -->
                   <h1 class="banner-title"><?php echo get_post_meta($post->ID, 'banner-title', true);?></h1>
+                  <!-- Выводим текст через данную конструкцию -->
                   <p>
                     <?php echo get_post_meta($post->ID, 'banner-description', true);?>
                   </p>

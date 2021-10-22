@@ -15,6 +15,7 @@ if ( ! function_exists('wp_dev_setup')) {
 // Добавляем динамический тег <title>
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
+	set_post_thumbnail_size( 720, 480, true );
 }
 add_action( 'after_setup_theme', 'wp_dev_setup' );
 }
@@ -39,9 +40,9 @@ function wp_dev_scripts() {
 	wp_enqueue_style( 'wp_dev', get_template_directory_uri() . '/css/style.css', array(), null );
 
 	// Подключение скриптов
-	wp_deregister_script('jquery' );
-	wp_register_script('jquery', get_template_directory_uri() . '/plugins/jquery/jquery.min.js' );
+	// wp_deregister_script('jquery' );
 	wp_enqueue_script('jquery');
+	wp_register_script('jquery', get_template_directory_uri() . '/plugins/jquery/jquery.min.js' );
 	wp_enqueue_script('popper', get_template_directory_uri() . '/plugins/bootstrap/js/popper.min.js', array('jquery'), '1.0.0', true );
 	wp_enqueue_script('bootstrap', get_template_directory_uri() . '/plugins/bootstrap/js/bootstrap.min.js', array('jquery'), '1.0.0', true );
 	wp_enqueue_script('wow', get_template_directory_uri() . '/plugins/counterup/wow.min.js', array('jquery'), '1.0.0', true );
@@ -119,6 +120,33 @@ class bootstrap_4_walker_nav_menu extends Walker_Nav_menu {
         $output .= apply_filters ( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 
     }
+}
+
+## отключаем создание миниатюр файлов для указанных размеров
+add_filter( 'intermediate_image_sizes', 'delete_intermediate_image_sizes' );
+function delete_intermediate_image_sizes( $sizes ){
+	// размеры которые нужно удалить
+	return array_diff( $sizes, [
+		'medium_large',
+		'large',
+		'1536x1536',
+		'2048x2048',
+	] );
+}
+
+
+add_action( 'widgets_init', 'wp_dev_widgets_init' ); // цепляемся к событию wordpress widgets_init и выполняем функцию
+
+function wp_dev_widgets_init(){ //инициализируем несколько виджетов
+
+	register_sidebar( array(
+		'name'          => esc_html__('Сайдбар блога', 'wp_dev'),
+		'id'            => "sidebar-blog",
+		'before_widget' => '<section id="%1$s" class="sidebar-widget %2%s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h5 class="widget-title mb-3">',
+		'after_title'   => '</h5>',
+	));
 }
 
 ?>

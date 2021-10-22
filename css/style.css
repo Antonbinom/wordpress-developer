@@ -1236,7 +1236,14 @@ BLOG PAGE
 }
 
 .blog-post img {
+  width: 100%;
+  height: 227px;
   border-radius: 5px;
+  object-fit: cover;
+}
+
+.blog-post img.wide {
+  height: 389px;
 }
 
 .blog-post .post-author i,
