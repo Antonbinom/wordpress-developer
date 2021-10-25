@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-7">
                 <div class="banner-content content-padding">
-                    <h1 class="text-white">Пять способов обойти конкурентов</h1>
+                    <h1 class="text-white"><?php the_title(); ?></h1>
                     <p>Поисковая выдача — это всегда конкуренция. Но что делать, чтобы конкуренты остались позади вас? Отвечаю в статье</p>
                 </div>
             </div>
@@ -18,53 +18,28 @@
 <section class="section blog-wrap">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <main class="col-lg-8">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="blog-post">
-                                <img src="images/blog/blog-lg.jpg" alt="" class="img-fluid">
-                                <div class="mt-4 mb-3 d-flex">
-                                    <div class="post-author mr-3">
-                                        <i class="fa fa-user"></i>
-                                        <span class="h6 text-uppercase">Оксана Вальнова</span>
-                                    </div>
 
-                                    <div class="post-info">
-                                        <i class="fa fa-calendar-check"></i>
-                                        <span>1 декабря 2019</span>
-                                    </div>
-                                </div>
+                        <?php
+                        while ( have_posts() ) :
+                            the_post();
+                            get_template_part( 'template-parts/content', get_post_type() );
+                            the_post_navigation(
+                                array(
+                                    'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'wp_dev' ) . '</span> <span class="nav-title">%title</span>',
+                                    'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'wp_dev' ) . '</span> <span class="nav-title">%title</span>',
+                                )
+                            );
 
-                                <a href="#" class="h4 ">Что делать с конкурентами</a>
+                            // If comments are open or we have at least one comment, load up the comment template.
+                            if ( comments_open() || get_comments_number() ) :
+                                comments_template();
+                            endif;
 
-                                <p class="mt-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi, aliquid perspiciatis voluptate voluptatibus, dolorem laboriosam deleniti dolores reprehenderit nostrum odit, fuga iusto perferendis quas suscipit corporis obcaecati maxime provident cumque!</p>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veri.</p>
-
-                                <blockquote class="quote">
-                                    <i class="fa fa-quote-left"></i>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nobis, molestias ipsam assumenda debitis quibusdam mollitia laudantium facere neque quas optio sequi eligendi recusandae, veritatis dicta asperiores ex fugiat quasi!
-                                </blockquote>
-
-                                <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-                                <div class="mt-5 mb-3">
-                                    <h5 class="d-inline-block mr-3">Метки:</h5>
-                                    <ul class="list-inline d-inline-block">
-                                        <li class="list-inline-item"><a href="#">Agency</a>,</li>
-                                        <li class="list-inline-item"><a href="#">Marketing</a>,</li>
-                                        <li class="list-inline-item"><a href="#">Business</a></li>
-                                    </ul>
-                                </div>
-                                <div class="my-4">
-                                    <h5 class="d-inline-block mr-3">Поделитесь:</h5>
-                                    <ul class="list-inline d-inline-block">
-                                        <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
-                                        <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                        <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
+                        endwhile; // End of the loop.
+                        ?>
 
                             <div class="comments my-4">
                                 <h3 class="mb-5">Комментарии:</h3>
@@ -78,16 +53,16 @@
 
                                         <a href="#" class="reply">Ответить <i class="fa fa-reply"></i></a>
 
-                                            <div class="media mt-5">
-                                                <img src="images/blog/2.jpg" alt="" class="img-fluid d-flex mr-4 rounded">
-                                                <div class="media-body">
-                                                    <h5>Егор Савицкий</h5>
-                                                    <span class="text-muted">20 января 2020</span>
-                                                    <p class="mt-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi laborum dolores quidem ea optio fuga nesciunt tempora, in tenetur iusto!</p>
+                                        <div class="media mt-5">
+                                            <img src="images/blog/2.jpg" alt="" class="img-fluid d-flex mr-4 rounded">
+                                            <div class="media-body">
+                                                <h5>Егор Савицкий</h5>
+                                                <span class="text-muted">20 января 2020</span>
+                                                <p class="mt-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi laborum dolores quidem ea optio fuga nesciunt tempora, in tenetur iusto!</p>
 
-                                                    <a href="#" class="reply">Ответить <i class="fa fa-reply"></i></a>
-                                                </div>
+                                                <a href="#" class="reply">Ответить <i class="fa fa-reply"></i></a>
                                             </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="media mb-4">
@@ -130,9 +105,9 @@
                             </div>
                         </div>
                     </div>
-            </div>
+            </main>
             <div class="col-lg-4">
-                      <div class="row">
+                    <div class="row">
                         <div class="col-lg-12">
                             <div class="sidebar-widget search">
                                 <div class="form-group">
@@ -184,7 +159,6 @@
                                 <a href="#"> <i class="fa fa-file-pdf"></i>10 источников бесплатного SEO</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

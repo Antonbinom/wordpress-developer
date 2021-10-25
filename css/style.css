@@ -1261,7 +1261,7 @@ BLOG PAGE
   padding-left: 20px;
 }
 
-.category ul li {
+#categories-3 ul li {
   margin-bottom: 10px;
   text-transform: capitalize;
   position: relative;
@@ -1270,7 +1270,10 @@ BLOG PAGE
   padding-bottom: 10px;
 }
 
-.category ul li:before {
+#categories-3 ul li a {
+  color: #788487;
+}
+#categories-3 ul li:before {
   position: absolute;
   content: "\f105";
   left: 0px;
@@ -1280,16 +1283,16 @@ BLOG PAGE
   font-weight: 900;
 }
 
-.tag a {
+#tag_cloud-2 a {
   text-transform: capitalize;
   padding: 5px 8px;
   border: 1px solid #eee;
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 14px !important;
   display: inline-block;
 }
 
-.search i {
+.widget_search i {
   position: absolute;
   right: 0px;
   top: 0px;
@@ -1298,7 +1301,7 @@ BLOG PAGE
   color: #635CDB;
 }
 
-.download a {
+#download_widget-2 a {
   display: block;
   padding: 12px 20px;
   border: 1px solid #eee;
@@ -1306,7 +1309,7 @@ BLOG PAGE
   background: #f2f2f2;
 }
 
-.download a i {
+#download_widget-2 a i {
   margin-right: 15px;
   color: #635CDB;
 }
