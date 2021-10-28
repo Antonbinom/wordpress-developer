@@ -1,18 +1,15 @@
 <div class="blog-post">
-		<img src="images/blog/blog-lg.jpg" alt="" class="img-fluid">
 		<div class="mt-4 mb-3 d-flex">
 				<div class="post-author mr-3">
 						<i class="fa fa-user"></i>
-						<span class="h6 text-uppercase">Оксана Вальнова</span>
+						<span class="h6 text-uppercase"><?php the_author();?></span>
 				</div>
 
 				<div class="post-info">
 						<i class="fa fa-calendar-check"></i>
-						<span>1 декабря 2019</span>
+						<span><?php the_date('j F Y');?></span>
 				</div>
 		</div>
-
-		<a href="#" class="h4 "><?php the_title();?></a>
 
 		<?php the_content(); ?>
 
