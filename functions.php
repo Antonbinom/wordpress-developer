@@ -13,15 +13,15 @@ if ( ! function_exists('wp_dev_setup')) {
 	]);
 
 // Добавляем поддержку html5
-add_theme_support( 'html5', array(
-	'comment-list',
-	'comment-form',
-	'search-form',
-	'gallery',
-	'caption',
-	'script',
-	'style',
-));
+		add_theme_support( 'html5', array(
+			'comment-list',
+			'comment-form',
+			'search-form',
+			'gallery',
+			'caption',
+			'script',
+			'style',
+	) );
 
 // Добавляем динамический тег <title>
 	add_theme_support( 'title-tag' );
@@ -321,9 +321,9 @@ function register_download_widget() {
 add_action( 'widgets_init', 'register_download_widget' );
 
 
+// Шаблон для комментариев
 
-
-class Bootsrap_Walker_Comment extends Walker {
+class Bootstrap_Walker_Comment extends Walker {
 
 	/**
 	 * What the class handles.
@@ -718,13 +718,13 @@ class Bootsrap_Walker_Comment extends Walker {
 		}
 		?>
 		<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?>>
-			<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
-				<?php
-				if ( 0 != $args['avatar_size'] ) {
-					echo get_avatar( $comment, $args['avatar_size'], 'mystery', '', array('class' => 'img-fluid d-flex mr-4 rounded') );
-				}
-				?>
-				<footer class="comment-meta">
+			<article id="div-comment-<?php comment_ID(); ?>" class="media mb-4">
+					<?php
+						if ( 0 != $args['avatar_size'] ) {
+							echo get_avatar( $comment, $args['avatar_size'], 'mystery', '', array('class' => 'img-fluid d-flex mr-4 rounded') );
+						}
+						?>
+						<footer class="comment-meta">
 						<?php
 						$comment_author = get_comment_author_link( $comment );
 
@@ -762,23 +762,23 @@ class Bootsrap_Walker_Comment extends Walker {
 					<?php endif; ?>
 					<div class="mt-2">
 						<?php comment_text(); ?>
-					</div><!-- .comment-content -->
+					</div><!-- .mt-2 -->
 					<?php
-					if ( '1' == $comment->comment_approved || $show_pending_links ) {
-						comment_reply_link(
-							array_merge(
-								$args,
-								array(
-									'add_below' => 'div-comment',
-									'depth'     => $depth,
-									'max_depth' => $args['max_depth'],
-									'before'    => '<div class="reply">',
-									'after'     => '</div>',
+				if ( '1' == $comment->comment_approved || $show_pending_links ) {
+					comment_reply_link(
+						array_merge(
+							$args,
+							array(
+								'add_below' => 'div-comment',
+								'depth'     => $depth,
+								'max_depth' => $args['max_depth'],
+								'before'    => '<div class="reply">',
+								'after'     => '</div>',
 								)
-							)
-						);
-					}
-					?>
+								)
+							);
+						}
+						?>
 				</footer><!-- .comment-meta -->
 
 
