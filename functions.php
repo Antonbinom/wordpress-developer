@@ -787,4 +787,69 @@ class Bootstrap_Walker_Comment extends Walker {
 	}
 }
 
+
+// Регистрация нового типа записи
+
+add_action('init', 'my_custom_init');
+function my_custom_init(){
+	register_post_type('services', array(
+		'labels'             => array(
+			'name'               => __('Услуги'),
+			'singular_name'      => __('Услуга'),
+			'add_new'            => __('Добавить новую'),
+			'add_new_item'       => __('Добавить новую услугу'),
+			'edit_item'          => __('Редактировать услугу'),
+			'new_item'           => __('Новая услуга'),
+			'view_item'          => __('Посмотреть услугу'),
+			'search_items'       => __('Найти услугу'),
+			'not_found'          => __('Услуг не найдено'),
+			'not_found_in_trash' => __('В корзине услуг не найдено'),
+			'parent_item_colon'  => __(''),
+			'menu_name'          => __('Услуги')
+
+		),
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => true,
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => 5,
+		'supports'           => array('title','editor','author','thumbnail','excerpt'),
+		'menu_icon'					 => 'dashicons-portfolio'
+	) );
+
+	register_post_type('partners', array(
+		'labels'             => array(
+			'name'               => __('Партнеры'),
+			'singular_name'      => __('Партнеры'),
+			'add_new'            => __('Добавить нового'),
+			'add_new_item'       => __('Добавить нового партнера'),
+			'edit_item'          => __('Редактировать партнера'),
+			'new_item'           => __('Новый партнер'),
+			'view_item'          => __('Посмотреть партнера'),
+			'search_items'       => __('Найти партнера'),
+			'not_found'          => __('Партнеров не найдено'),
+			'not_found_in_trash' => __('В корзине партнеров не найдено'),
+			'parent_item_colon'  => __(''),
+			'menu_name'          => __('Партнеры')
+
+		),
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => true,
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => 4,
+		'supports'           => array('title','thumbnail'),
+		'menu_icon'					 => 'dashicons-groups'
+	) );
+};
 ?>
