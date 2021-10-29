@@ -1252,7 +1252,7 @@ BLOG PAGE
   font-size: 14px;
 }
 
-.blog-post .post-author span, .blog-post .post-info span {
+.blog-post .post-author a, .blog-post .post-info  {
   font-size: 14px;
 }
 

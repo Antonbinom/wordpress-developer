@@ -6,8 +6,22 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 m-auto text-center col-sm-12 col-md-12">
                 <div class="banner-content content-padding">
-                    <h1 class="text-white">Promodise журнал</h1>
-                    <p>Полезные статьи про маркетинг и диджитал</p>
+                    <h1 class="text-white">
+											<?php
+												if (is_category()){
+													echo __('<small>Рубрика </small><br>') . get_queried_object()->name;
+												}
+												if (is_tag()){
+													echo __('<small>Записи с меткой </small><br>') . get_queried_object()->name;
+												}
+												if (is_author()){
+													echo __('<small>Записи автора </small><br>') . get_the_author_meta('display_name');
+												}
+												if (is_date()){
+													echo __('<small>Архив по дате </small><br>') . get_the_date('j F Y');
+												}
+											?>
+										</h1>
                 </div>
             </div>
         </div>
